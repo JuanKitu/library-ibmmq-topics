@@ -1,0 +1,1 @@
+export const STARTER_CONFIG = 'STARTER_CONFIG';
