@@ -1,3 +1,5 @@
+import { MQQueueManager } from 'ibmmq';
+
 export interface IConnectionConfig {
   userId?: string;
   password?: string;
@@ -9,8 +11,8 @@ export interface IConnectionConfig {
 }
 
 export interface IConnection {
-  connect: () => Promise<void>;
+  connect: () => Promise<MQQueueManager>;
   disconnect: () => Promise<void>;
-  produce: (message: any) => Promise<void>;
-  subscribe: () => Promise<void>;
+  subscribe: (conn: MQQueueManager) => void;
+  produce: (message: any, conn: MQQueueManager) => Promise<string>;
 }
